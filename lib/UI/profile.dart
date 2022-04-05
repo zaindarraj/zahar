@@ -36,17 +36,19 @@ class _ProfileState extends State<Profile> {
             left: 0,
             right: 0,
             child: SizedBox(
-              height: size.height * 0.1,
+              height: size.height * 0.2,
               width: size.width * 0.16,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   CircleAvatar(
+                    minRadius: 30,
+                    maxRadius: 30,
                     backgroundColor: Theme.of(context).primaryColor,
-                    child: Icon(Icons.person_add,
-                        size: 20, color: Color.fromARGB(255, 196, 13, 74)),
+                    child: const Icon(Icons.person_add,
+                        size: 30, color: Color.fromARGB(255, 196, 13, 74)),
                   ),
-                  Text(user!.name)
+                  Text(user!.name, style: TextStyle(fontSize: 23),)
                 ],
               ),
             ),
@@ -65,11 +67,13 @@ class _ProfileState extends State<Profile> {
                             builder: (context) => Orders()));
                   },
                   child: Container(
+                    padding: EdgeInsets.all(8),
                     margin: EdgeInsets.all(5),
                     width: size.width,
                     height: size.height * 0.05,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
                     ),
                     child: Row(
@@ -77,7 +81,7 @@ class _ProfileState extends State<Profile> {
                       children: const [
                         Text(
                           "Orders",
-                          style: TextStyle(fontSize: 23),
+                          style: TextStyle(fontSize: 18),
                         ),
                         Icon(Icons.arrow_forward)
                       ],
@@ -92,11 +96,13 @@ class _ProfileState extends State<Profile> {
                             builder: (context) => Subscribations()));
                   },
                   child: Container(
+                    padding: EdgeInsets.all(8),
                     margin: EdgeInsets.all(5),
                     width: size.width,
                     height: size.height * 0.05,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
                     ),
                     child: Row(
@@ -104,7 +110,7 @@ class _ProfileState extends State<Profile> {
                       children: const [
                         Text(
                           "Subscriptions",
-                          style: TextStyle(fontSize: 23),
+                          style: TextStyle(fontSize: 18),
                         ),
                         Icon(Icons.arrow_forward)
                       ],
@@ -119,11 +125,13 @@ class _ProfileState extends State<Profile> {
                             builder: (context) => LocationScreen()));
                   },
                   child: Container(
+                    padding: EdgeInsets.all(8),
                     margin: EdgeInsets.all(5),
                     width: size.width,
                     height: size.height * 0.05,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
                     ),
                     child: Row(
@@ -131,7 +139,7 @@ class _ProfileState extends State<Profile> {
                       children: const [
                         Text(
                           "Location",
-                          style: TextStyle(fontSize: 23),
+                          style: TextStyle(fontSize: 18),
                         ),
                         Icon(Icons.arrow_forward)
                       ],

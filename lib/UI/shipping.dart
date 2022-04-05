@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:location/location.dart';
 import 'package:zahar/UI/add_card.dart';
 import 'package:zahar/UI/location_screen.dart';
 import 'package:zahar/classes/api.dart';

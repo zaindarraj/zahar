@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:zahar/UI/add_card.dart';
-import 'package:zahar/UI/cart_screen.dart';
+import 'package:zahar/UI/admin.dart';
 import 'package:zahar/UI/dashboard.dart';
-import 'package:zahar/UI/design_screen.dart';
-import 'package:zahar/UI/item.dart';
-import 'package:zahar/UI/location_screen.dart';
-import 'package:zahar/UI/shipping.dart';
-import 'package:zahar/UI/sign_in.dart';
-import 'package:zahar/UI/signup_screen.dart';
-import 'package:zahar/UI/subscribe.dart';
-import 'package:zahar/UI/subscriptions.dart';
+
+
 import 'package:zahar/classes/api.dart';
 import 'package:zahar/classes/storage.dart';
 import 'package:zahar/classes/user.dart';
@@ -49,7 +42,7 @@ class MyApp extends StatelessWidget {
         primaryColor: const Color.fromARGB(98, 255, 126, 126),
         secondaryHeaderColor: const Color.fromARGB(255, 238, 84, 84),
       ),
-      home: const ShippingScreen(),
+      home: const AdminScreen(),
     );
   }
 }

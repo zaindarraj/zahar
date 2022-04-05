@@ -25,7 +25,9 @@ class _LocationScreenState extends State<LocationScreen> {
       ),
       body: Center(
         child: SafeArea(
-          child: SingleChildScrollView(
+          child: SizedBox(
+            width: size.width,
+            height: size.height,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -105,7 +107,7 @@ class _LocationScreenState extends State<LocationScreen> {
                     }),
                 Container(
                   width: size.width * 0.6,
-                  height: size.height * 0.4,
+                  height: size.height *0.5,
                   child: Column(
                     children: [
                       TextField(
