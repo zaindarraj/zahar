@@ -16,10 +16,14 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  Future<List<Map<String, dynamic>>>? firstRow;
   int currentIndex = 1;
   final globalKey = GlobalKey<ScaffoldState>();
-
+  List<Map<String,dynamic>> firstRow = [
+    {
+      "asset" : "assets/sales.jpg",
+      "text" : "40 % OFF!"
+    }
+  ];
   @override
   void initState() {
     super.initState();
@@ -30,7 +34,6 @@ class _DashboardState extends State<Dashboard> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
         key: globalKey,
-        drawer: Drawer(),
         bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Colors.grey,
             currentIndex: currentIndex,
@@ -47,8 +50,7 @@ class _DashboardState extends State<Dashboard> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.phone), label: "Contact Us"),
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.settings), label: "Settings"),
+           
             ]),
         backgroundColor: const Color.fromARGB(255, 214, 210, 210),
         appBar: AppBar(
@@ -267,7 +269,7 @@ class _DashboardState extends State<Dashboard> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    browseType = "newborn";
+                    browseType = "newBorn";
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -535,14 +537,9 @@ class _DashboardState extends State<Dashboard> {
   Widget firstList(Size size) {
     return SizedBox(
         height: size.height * 0.5,
-        child: FutureBuilder<dynamic>(
-          future: API.getGeneral(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasData) {
-                if (snapshot.data.runtimeType == List<Map<String, dynamic>>) {
-                  return ListView.builder(
-                      itemCount: snapshot.data!.length,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+                      itemCount: firstRow.length,
                       itemBuilder: (context, index) {
                         return Stack(
                           children: [
@@ -555,7 +552,7 @@ class _DashboardState extends State<Dashboard> {
                                       Border.all(color: Colors.grey, width: 5),
                                   borderRadius: BorderRadius.circular(5)),
                               child: Image.network(
-                                snapshot.data![index]["url"],
+                               firstRow[index]["asset"],
                                 width: size.width * 0.5,
                                 height: size.height * 0.5,
                                 fit: BoxFit.cover,
@@ -570,24 +567,14 @@ class _DashboardState extends State<Dashboard> {
                                 decoration: BoxDecoration(
                                     color: Colors.grey,
                                     borderRadius: BorderRadius.circular(10)),
-                                child: Text(snapshot.data![index]["text"]),
+                                child: Text(firstRow[index]["text"]),
                               ),
                             )
                           ],
                         );
-                      });
-                }
-              }
-            } else if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-            return const Center(
-              child: Text("Sorry no data found"),
-            );
-          },
-        ));
+                      }),
+           
+        );
   }
 }
 
